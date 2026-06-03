@@ -22,7 +22,7 @@ export default function Navbar() {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="text-3xl font-black no-underline"
+                        className="no-underline"
                     >
                         <Image src="/logo 1.png" alt="Hireloop Logo" width={120} height={120} />
                     </Link>
