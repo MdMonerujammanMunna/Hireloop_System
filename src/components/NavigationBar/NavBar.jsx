@@ -46,13 +46,13 @@ export default function Navbar() {
                         </ul>
                         <div className="flex items-center md:gap-5 lg:gap-10 md:ml-3 lg:ml-6">
                             <Link
-                                href="#"
+                                href="/LogIn"
                                 className="text-[18px] font-semibold text-[#5C53FE] no-underline"
                             >
                                 Sign In
                             </Link>
 
-                            <Link href="#" className="no-underline">
+                            <Link href="/SignUp" className="no-underline">
                                 <Button className="bg-[#5C53FE] pt-4 pb-4 pl-6 pr-6 text-white rounded-lg text-[18px] font-medium">
                                     Get Started
                                 </Button>
@@ -92,16 +92,18 @@ export default function Navbar() {
                             </ul>
 
                             <div className="mt-4 flex flex-col gap-3">
-                                <Link href="#" className=" no-underline hover:text-[#5C53FE]">
+                                <Link href="/LogIn" className=" no-underline hover:text-[#5C53FE]">
                                     Sign In
                                 </Link>
 
-                                <Button
-                                    fullWidth
-                                    className="bg-[#5C53FE] text-white"
-                                >
-                                    Get Started
-                                </Button>
+                                <Link href="/SignUp" className="no-underline">
+                                    <Button
+                                        fullWidth
+                                        className="bg-[#5C53FE] text-white"
+                                    >
+                                        Get Started
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     )
