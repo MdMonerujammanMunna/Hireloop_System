@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function Footer() {
     return (
         <footer className="bg-black">
-            <div className="mx-auto max-w-7xl px-6 py-20">
+            <div className="mx-auto container px-6 py-20">
                 <div className="flex md:flex-row flex-col justify-between gap-5">
                     {/* Brand */}
                     <div className="flex-1 flex flex-col items-center md:items-start md:text-left text-center">

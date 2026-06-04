@@ -16,8 +16,8 @@ export default function Navbar() {
 
     return (
         <nav className="w-full px-4 pt-4">
-            <div className="mx-auto max-w-7xl">
-                <header className="flex h-18 items-center justify-between rounded-2xl border border-white/10 bg-[#222222]/80 px-6 backdrop-blur-xl">
+            <div className="mx-auto max-w-6xl">
+                <header className="flex h-18 items-center justify-between rounded-2xl border border-white/10 bg-[#222222]/80 px-10 backdrop-blur-xl">
 
                     {/* Logo */}
                     <Link
