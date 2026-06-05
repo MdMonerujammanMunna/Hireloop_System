@@ -2,17 +2,25 @@
 
 import { useState } from "react";
 import { Button, Link } from "@heroui/react";
-// import { Menu, X } from "lucide-react";
 import { Bars, Xmark } from "@gravity-ui/icons";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+
+
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const { data: session, isLoading } = authClient.useSession()
+    const user = session?.user
 
     const navItems = [
         { label: "Browse Jobs", href: "#" },
         { label: "Company", href: "#" },
         { label: "Pricing", href: "#" },
     ];
+    const LogoutClick = async () => {
+        await authClient.signOut();
+    }
 
     return (
         <nav className="w-full px-4 pt-4">
@@ -44,20 +52,35 @@ export default function Navbar() {
                             ))}
                             <hr className="h-6 border-[#A8A8A840] md:mx-3 lg:mx-6 border" />
                         </ul>
-                        <div className="flex items-center md:gap-5 lg:gap-10 md:ml-3 lg:ml-6">
-                            <Link
-                                href="/LogIn"
-                                className="text-[18px] font-semibold text-[#5C53FE] no-underline"
-                            >
-                                Sign In
-                            </Link>
+                        {user ?
+                            <>
+                                <div className="flex items-center md:gap-5 lg:gap-10 md:ml-3 lg:ml-6">
+                                    <span className="text-sm text-zinc-300 ">
+                                        Hello, {user.name.split(" ")[0]}
+                                    </span>
+                                    <Button variant="ghost" className="text-[18px] font-semibold text-[#5C53FE] no-underline" onClick={LogoutClick}>
+                                        Sign out
+                                    </Button>
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div className="flex items-center md:gap-5 lg:gap-10 md:ml-3 lg:ml-6">
+                                    <Link
+                                        href="/LogIn"
+                                        className="text-[18px] font-semibold text-[#5C53FE] no-underline"
+                                    >
+                                        Sign In
+                                    </Link>
 
-                            <Link href="/SignUp" className="no-underline">
-                                <Button className="bg-[#5C53FE] pt-4 pb-4 pl-6 pr-6 text-white rounded-lg text-[18px] font-medium">
-                                    Get Started
-                                </Button>
-                            </Link>
-                        </div>
+                                    <Link href="/SignUpForm" className="no-underline">
+                                        <Button className="bg-[#5C53FE] pt-4 pb-4 pl-6 pr-6 text-white rounded-lg text-[18px] font-medium">
+                                            Get Started
+                                        </Button>
+                                    </Link>
+                                </div>
+                            </>}
+
                     </div>
 
                     {/* Mobile Toggle */}
@@ -90,21 +113,34 @@ export default function Navbar() {
                                     </li>
                                 ))}
                             </ul>
-
-                            <div className="mt-4 flex flex-col gap-3">
-                                <Link href="/LogIn" className=" no-underline hover:text-[#5C53FE]">
-                                    Sign In
-                                </Link>
-
-                                <Link href="/SignUp" className="no-underline">
+                            {user ?
+                                <>
                                     <Button
+                                        onClick={LogoutClick}
                                         fullWidth
-                                        className="bg-[#5C53FE] text-white"
+                                        className="bg-[#5C53FE] text-white w-full mt-4 "
                                     >
-                                        Get Started
+                                        Sign out
                                     </Button>
-                                </Link>
-                            </div>
+                                </>
+                                :
+                                <>
+                                    <div className="mt-4 flex flex-col gap-3">
+                                        <Link href="/LogIn" className=" no-underline hover:text-[#5C53FE]">
+                                            Sign In
+                                        </Link>
+
+                                        <Link href="/SignUpForm" className="no-underline w-full">
+                                            <Button
+                                                fullWidth
+                                                className="bg-[#5C53FE] text-white"
+                                            >
+                                                Get Started
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                </>}
+
                         </div>
                     )
                 }

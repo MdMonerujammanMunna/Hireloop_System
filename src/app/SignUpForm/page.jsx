@@ -1,30 +1,29 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { useState } from "react";
 
-export default function SignUp() {
+export default function SignUpForm() {
     const [showPassword, setShowPassword] = useState(false);
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        password: ""
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value
-        }));
-    };
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Sign Up Data Object:", formData);
-    };
-
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData.entries());
+        const { data, error } = await authClient.signUp.email({
+            email: userData.email,
+            password: userData.password,
+            name: userData.name
+        })
+        if (error) {
+            alert("Sign up failed: " + error.message);
+        } else {
+            alert("Sign up successful!");
+            redirect("/LogIn");
+        }
+    }
     return (
         <div className="flex items-center justify-center px-4 py-20">
             <form
@@ -56,8 +55,6 @@ export default function SignUp() {
                                 name="name"
                                 type="text"
                                 placeholder="Enter your full name"
-                                value={formData.name}
-                                onChange={handleChange}
                                 required
                                 className="mt-1 w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border focus:border-2 placeholder:text-gray-200 focus:outline-none focus:border-[#5C53FE] transition"
                             />
@@ -80,8 +77,6 @@ export default function SignUp() {
                                 name="email"
                                 type="email"
                                 placeholder="Enter your email"
-                                value={formData.email}
-                                onChange={handleChange}
                                 required
                                 className="mt-1 w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border focus:border-2 placeholder:text-gray-200 focus:outline-none focus:border-[#5C53FE] transition"
                             />
@@ -104,8 +99,6 @@ export default function SignUp() {
                                 name="password"
                                 type={showPassword ? "text" : "password"}
                                 placeholder="Enter your password"
-                                value={formData.password}
-                                onChange={handleChange}
                                 required
                                 className="mt-1 w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border focus:border-2 placeholder:text-gray-200 focus:outline-none focus:border-[#5C53FE] transition"
                             />

@@ -1,5 +1,7 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
+import { toast } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -7,9 +9,25 @@ import { useState } from "react";
 export default function LogIn() {
     const [showPassword, setShowPassword] = useState(false);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const fromdata = new FormData(e.target);
+        const userdata = Object.fromEntries(fromdata.entries());
+        const { data, error } = await authClient.signIn.email({
+            email: userdata.email,
+            password: userdata.password,
+            callbackURL: "/"
+        });
+        if (error) {
+            alert("Login failed: " + error.message);
+        } else {
+            alert("Login successful!");
+        }
+    };
     return (
         <div className="flex items-center justify-center px-4 py-20">
             <form
+                onSubmit={handleSubmit}
                 className="w-full rounded-2xl border-2 border-[#5C53FE] hover:shadow-xl hover:shadow-[#5C53FE]/20 max-w-lg"
             >
                 <div className="py-4 text-center ">
@@ -122,7 +140,7 @@ export default function LogIn() {
                 <div className="px-8 py-4 text-center border-t ">
                     <p>
                         Dont have an account?{" "}
-                        <Link href="/SignUp" className="text-sm font-medium text-[#5C53FE]">
+                        <Link href="/SignUpForm" className="text-sm font-medium text-[#5C53FE]">
                             Sign up
                         </Link>
                     </p>
