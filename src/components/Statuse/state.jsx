@@ -2,7 +2,7 @@ import { BriefcaseFill, ChartColumn, PersonMagnifier, SparklesFill } from '@grav
 
 export default function JobPortalHero() {
     return (
-        <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center">
+        <div className="min-h-screen py-20 bg-black relative overflow-hidden flex items-center justify-center">
             {/* Background Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat h-200"

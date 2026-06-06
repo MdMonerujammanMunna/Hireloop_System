@@ -1,4 +1,5 @@
 import FeaturesSection from "@/components/FeaturesSection/FeaturesSection";
+import PricingSection from "@/components/PricingSection/PricingSection";
 import JobPortalHero from "@/components/Statuse/state";
 
 
@@ -8,6 +9,7 @@ export default function Home() {
     <>
       <JobPortalHero />
       <FeaturesSection />
+      <PricingSection />
     </>
   );
 }

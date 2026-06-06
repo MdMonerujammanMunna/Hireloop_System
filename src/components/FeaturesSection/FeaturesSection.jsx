@@ -88,7 +88,7 @@ export default function FeaturesSection() {
                 key={feature.title}
                 className="flex gap-4 border border-dashed  p-6"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-b from-[#010102] to-[#31313190]">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-linear-to-b from-[#010102] to-[#31313190] hover:scale-110 transition-transform duration-300">
                   <Icon className="h-5 w-5 text-white" />
                 </div>
 
