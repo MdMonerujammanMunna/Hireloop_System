@@ -27,7 +27,7 @@ export default function JobPortalHero() {
                 {/* Stats Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 justify-items-center">
                     {/* Stat 1 */}
-                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-[250px] border border-white hover:scale-105 transition-transform duration-300">
+                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-62.5 border border-white hover:scale-105 transition-transform duration-300">
                         <div className="p-8">
                             <BriefcaseFill className="h-8 w-8 mb-8" />
                             <div className="flex flex-col items-start">
@@ -40,7 +40,7 @@ export default function JobPortalHero() {
                     </div>
 
                     {/* Stat 2 */}
-                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-[250px] border border-white hover:scale-105 transition-transform duration-300">
+                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-62.5 border border-white hover:scale-105 transition-transform duration-300">
                         <div className="p-8">
                             <ChartColumn className="h-8 w-8 mb-8" />
                             <div className="flex flex-col items-start">
@@ -53,7 +53,7 @@ export default function JobPortalHero() {
                     </div>
 
                     {/* Stat 3 */}
-                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-[250px] border border-white hover:scale-105 transition-transform duration-300">
+                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-62.5 border border-white hover:scale-105 transition-transform duration-300">
                         <div className="p-8">
                             <PersonMagnifier className="h-8 w-8 mb-8" />
                             <div className="flex flex-col items-start">
@@ -66,7 +66,7 @@ export default function JobPortalHero() {
                     </div>
 
                     {/* Stat 4 */}
-                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-[250px] border border-white hover:scale-105 transition-transform duration-300">
+                    <div className="bg-linear-to-b from-[#010102] to-[#31313190] rounded-2xl w-62.5 border border-white hover:scale-105 transition-transform duration-300">
                         <div className="p-8">
                             <SparklesFill className="h-8 w-8 mb-8" />
                             <div className="flex flex-col items-start">
@@ -81,7 +81,7 @@ export default function JobPortalHero() {
             </div>
 
             {/* Optional subtle stars overlay */}
-            <div className="absolute inset-0 bg-[radial-gradient(white_0.5px,transparent_1px)] bg-[length:50px_50px] opacity-30 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(white_0.5px,transparent_1px)] bg-size-[50px_50px] opacity-30 pointer-events-none" />
         </div>
     );
 }
