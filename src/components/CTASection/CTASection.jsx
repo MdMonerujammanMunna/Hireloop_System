@@ -4,8 +4,6 @@ import Link from "next/link";
 export default function CTASection() {
   return (
     <section className="relative overflow-hidden bg-black min-h-120 flex items-center justify-center px-6 py-50">
-
-      {/* ── cta-bg.png ── */}
       {/* parent must be relative + have explicit size for next/image fill to work */}
       <div className="absolute inset-0 z-0">
         <Image
