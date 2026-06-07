@@ -5,8 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { useState } from "react";
+import { Select, Label, ListBox } from "@heroui/react";
+
+import {
+    MagnifierPlus,
+    SquareChartColumn,
+} from "@gravity-ui/icons";
 
 export default function SignUpForm() {
+    const [role, setRole] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -15,7 +22,8 @@ export default function SignUpForm() {
         const { data, error } = await authClient.signUp.email({
             email: userData.email,
             password: userData.password,
-            name: userData.name
+            name: userData.name,
+            role: userData.role,
         })
         if (error) {
             alert("Sign up failed: " + error.message);
@@ -123,7 +131,32 @@ export default function SignUpForm() {
                             </button>
                         </div>
                     </div>
-
+                    <div className="space-y-1.5">
+                        <Select name="role" selectedKey={role}
+                            onSelectionChange={(key) => setRole(String(key))} placeholder="Choose Your Role" isRequired>
+                            <Label>Get Started As</Label>
+                            <Select.Trigger className={"mt-1 rounded-lg border focus:border-2 text-sm placeholder:text-gray-200 focus:outline-none focus:border-[#5C53FE] transition"}>
+                                <Select.Value className={"flex items-center gap-4"} />
+                                <Select.Indicator />
+                            </Select.Trigger>
+                            <Select.Popover className={"rounded-lg"}>
+                                <ListBox>
+                                    <ListBox.Item id="Seeker" textValue="Seeker">
+                                        <MagnifierPlus />
+                                        Seeker
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                    <ListBox.Item id="Recruiter" textValue="Recruiter">
+                                        <SquareChartColumn />
+                                        Recruiter
+                                        <ListBox.ItemIndicator />
+                                    </ListBox.Item>
+                                </ListBox>
+                            </Select.Popover>
+                        </Select>
+                        {/* keep a native hidden input so FormData picks up the role value */}
+                        <input type="hidden" name="role" value={role} />
+                    </div>
                     <button
                         type="submit"
                         className="mt-10 border cursor-pointer bg-[#5C53FE] w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-lg text-white hover:opacity-90 active:scale-[0.98] transition-all"

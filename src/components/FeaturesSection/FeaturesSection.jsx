@@ -4,7 +4,6 @@ import {
   MagnifierPlus,
   ChartLineArrowUp,
   SquareChartColumn,
-  // ChartBarStacked,
   BookmarkFill,
   SparklesFill,
   File,
