@@ -1,3 +1,4 @@
+import DashboardOverview from "@/components/dashboardComponents/Overview/Overview";
 import StatsCards from "@/components/dashboardComponents/StatsCard/StatsCard";
 
 
@@ -9,6 +10,7 @@ const RecruiterHomePage = () => {
                 <div className="my-15">
                     <StatsCards />
                 </div>
+                <DashboardOverview />
             </div>
         </>
     )

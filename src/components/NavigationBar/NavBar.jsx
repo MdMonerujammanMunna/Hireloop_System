@@ -16,7 +16,7 @@ export default function Navbar() {
     const navItems = [
         { label: "Browse Jobs", href: "#" },
         { label: "Company", href: "#" },
-        { label: "Pricing", href: "#" },
+        { label: "Pricing", href: "/Dashboard/Recruiter" },
     ];
     const LogoutClick = async () => {
         await authClient.signOut();
