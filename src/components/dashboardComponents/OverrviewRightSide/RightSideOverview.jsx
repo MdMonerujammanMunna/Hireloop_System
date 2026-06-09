@@ -45,7 +45,7 @@ export default function RightSideOverview() {
 
     return (
         <>
-            <Card className="w-full bg-[#18181b] border border-zinc-800/50 rounded-2xl shadow-xl p-2">
+            <Card className="bg-[#18181b] border border-zinc-800/50 rounded-2xl shadow-xl p-2">
 
                 {/* Card Header (Card.Header) */}
                 <Card.Header className="flex items-center justify-between px-3 pt-3 pb-1 bg-transparent">
