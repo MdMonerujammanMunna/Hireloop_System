@@ -32,7 +32,7 @@ export default function Navbar() {
                         href="/"
                         className="no-underline"
                     >
-                        <Image src="/logo 1.png" alt="Hireloop Logo" width={120} height={120} />
+                        <Image src="/logo 1.png" alt="Hireloop Logo" width={120} height={120} style={{ width: "auto", height: "auto" }} />
                     </Link>
 
                     {/* Desktop Actions */}

@@ -40,7 +40,7 @@ export default function SignUpForm() {
             >
                 <div className="py-4 text-center ">
                     <div className="flex items-center justify-center mb-2">
-                        <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} />
+                        <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} style={{ width: "auto", height: "auto" }} />
                     </div>
                     <h1 className="text-3xl font-bold">Create an <span className="text-[#5C53FE]">Account</span></h1>
                     <p >Start your journey today</p>

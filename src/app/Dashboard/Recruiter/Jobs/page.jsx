@@ -1,10 +1,13 @@
+import JobsTable from '@/components/dashboardComponents/CompanyJobPostTable/PostTable';
+import { getCompanyJobs } from '@/lib/api/job';
 import React from 'react';
 
-const RecruiterJobs = () => {
+const RecruiterJobs = async () => {
+    const companyId = "Man_123"
+    const res = await getCompanyJobs(companyId)
     return (
         <div>
-            <h1>Managae all jobs</h1>
-            <p>this is an </p>
+            <JobsTable item={res} />
         </div>
     );
 };

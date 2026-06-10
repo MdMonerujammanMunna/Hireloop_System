@@ -31,7 +31,7 @@ export default function LogIn() {
             >
                 <div className="py-4 text-center ">
                     <div className="flex items-center justify-center mb-2">
-                        <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} />
+                        <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} style={{ width: "auto", height: "auto" }} />
                     </div>
                     <h1 className="text-3xl font-bold">Welcome <span className="text-[#5C53FE]">Back</span></h1>
                     <p>Login to your account to continue</p>

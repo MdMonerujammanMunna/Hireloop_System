@@ -20,7 +20,7 @@ export default function Footer() {
                             href="/"
                             className="no-underline"
                         >
-                            <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} />
+                            <Image src="/logo 1.png" alt="Hireloop Logo" width={200} height={200} style={{ width: "auto", height: "auto" }} />
                         </Link>
 
                         <p className=" leading-8 text-zinc-500">

@@ -1,34 +1,37 @@
 "use client"
-import { LayoutSideContentLeft, Briefcase, Envelope, Gear, Circles4Diamond, SquareBarsVertical, Person } from "@gravity-ui/icons";
+import { LayoutSideContentLeft, Briefcase, Envelope, Gear, Circles4Diamond, SquareBarsVertical, PencilToSquare } from "@gravity-ui/icons";
 import { Avatar, Button, Drawer } from "@heroui/react";
+import Link from "next/link";
 import { useState } from "react";
 
 export function DashboardSideBar() {
     const [activeTab, setActiveTab] = useState("Dashboard");
 
     const navItems = [
-        { icon: Circles4Diamond, label: "Dashboard" },
-        { icon: SquareBarsVertical, label: "My Company" },
-        { icon: Briefcase, label: "Manage Jobs" },
-        { icon: Envelope, label: "Applications" },
-        { icon: Gear, label: "Settings" },
+        { icon: Circles4Diamond, href: "/Dashboard/Recruiter", label: "Dashboard" },
+        { icon: SquareBarsVertical, href: "/Dashboard/Recruiter/company", label: "My Company" },
+        { icon: Briefcase, href: "/Dashboard/Recruiter/Jobs", label: "Manage Jobs" },
+        { icon: PencilToSquare, href: "/Dashboard/Recruiter/Jobs/New", label: "Create Jobs" },
+        { icon: Envelope, href: "", label: "Applications" },
+        { icon: Gear, href: "", label: "Settings" },
     ];
 
     const NavBarcontent = <>
         <nav className="flex flex-col gap-1">
             {navItems.map((item) => (
-                <button
-                    key={item.label}
-                    onClick={() => setActiveTab(item.label)}
-                    className={`flex items-center gap-4 rounded-l-sm rounded-none px-5 py-4 font-semibold transition-all border-r-4 border-[#131314] ${activeTab === item.label
-                        ? "bg-[#2A2A2B] text-white border-r-white font-semibold"
-                        : "text-foreground border-l-transparent hover:bg-default"
-                        }`}
-                    type="button"
-                >
-                    <item.icon className="size-5" />
-                    {item.label}
-                </button>
+                <Link key={item.label} href={item.href}>
+                    <button
+                        onClick={() => setActiveTab(item.label)}
+                        className={`flex items-center gap-4 rounded-l-sm rounded-none px-5 py-4 font-semibold transition-all border-r-4 border-[#131314] ${activeTab === item.label
+                            ? "bg-[#2A2A2B] text-white border-r-white font-semibold"
+                            : "text-foreground border-l-transparent hover:bg-default"
+                            }`}
+                        type="button"
+                    >
+                        <item.icon className="size-5" />
+                        {item.label}
+                    </button>
+                </Link>
             ))}
         </nav>
     </>

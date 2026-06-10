@@ -1,8 +1,11 @@
 "use client";
 
+import { CreateJobs } from "@/lib/actions/Jobs";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function NewJobPage() {
+    const router = useRouter();
     const [form, setForm] = useState({
         title: "",
         category: "",
@@ -29,13 +32,23 @@ export default function NewJobPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const payload = {
-            ...form,
-            status: "active",
-            createdAt: new Date(),
-        };
-        console.log("Submitting Job:", payload);
-        alert("Job posted successfully!");
+        try {
+            const payload = {
+                ...form,
+                companyId: "Man_1",
+                status: "active",
+                createdAt: new Date(),
+            };
+            const res = await CreateJobs(payload);
+            if (res.insertedId) {
+                alert("Job posted successfully!");
+                e.target.reset();
+                router.push("/Dashboard/Recruiter/Jobs");
+            }
+        } catch (error) {
+            console.error("Error posting job:", error);
+            alert("Failed to post job. Please try again.");
+        }
     };
 
     return (
