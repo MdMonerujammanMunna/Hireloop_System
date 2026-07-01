@@ -2,10 +2,13 @@
 import { LayoutSideContentLeft, Briefcase, Envelope, Gear, Circles4Diamond, SquareBarsVertical, PencilToSquare } from "@gravity-ui/icons";
 import { Avatar, Button, Drawer } from "@heroui/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export function DashboardSideBar() {
-    const [activeTab, setActiveTab] = useState("Dashboard");
+    // const [activeTab, setActiveTab] = useState("Dashboard");
+    const pathName = usePathname();
+    const activeTab = pathName;
 
     const navItems = [
         { icon: Circles4Diamond, href: "/Dashboard/Recruiter", label: "Dashboard" },
@@ -21,8 +24,7 @@ export function DashboardSideBar() {
             {navItems.map((item) => (
                 <Link key={item.label} href={item.href}>
                     <button
-                        onClick={() => setActiveTab(item.label)}
-                        className={`flex items-center gap-4 rounded-l-sm rounded-none px-5 w-full py-4 font-semibold transition-all border-l-4 border-[#131314] ${activeTab === item.label
+                        className={`flex items-center gap-4 rounded-l-sm rounded-none px-5 w-full py-4 font-semibold transition-all border-l-4 border-[#131314] ${activeTab === item.href
                             ? "bg-[#2A2A2B] text-white border-l-white font-semibold"
                             : "text-foreground border-l-transparent hover:bg-default"
                             }`}

@@ -43,7 +43,7 @@ export default function JobsTable({ item }) {
                 <Table.ScrollContainer>
                     <Table.Content
                         aria-label="Jobs Table"
-                        className="min-w-[1000px]"
+                        className="min-w-250"
                     >
                         <Table.Header>
                             <Table.Column isRowHeader>Job</Table.Column>
