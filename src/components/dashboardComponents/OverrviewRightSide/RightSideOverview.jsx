@@ -45,32 +45,33 @@ export default function RightSideOverview() {
 
     return (
         <>
-            <Card className="bg-[#18181b] border border-zinc-800/50 rounded-2xl shadow-xl p-2">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-8">
+                <h2 className="text-xl font-semibold text-white">
+                    My Top Companies
+                </h2>
 
-                {/* Card Header (Card.Header) */}
-                <Card.Header className="flex items-center justify-between px-3 pt-3 pb-1 bg-transparent">
-                    <h2 className="text-xl font-semibold tracking-wide text-white">My Top Companies</h2>
-                    <button className="text-xs text-zinc-400 hover:text-white transition-colors">
-                        View all
-                    </button>
-                </Card.Header>
-
+                <button className="text-xs text-zinc-400 hover:text-white transition">
+                    View all
+                </button>
+            </div>
+            <Card className="bg-[#18181b]  border border-zinc-800/50 rounded-2xl shadow-xl p-2">
                 {/* Card Body (Card.Body) */}
-                <Card.Content className="flex flex-col gap-5 py-4">
+                <Card.Content className="flex flex-col  gap-5 py-4">
                     {companies.map((company, index) => (
                         <div
                             key={index}
                             className="flex items-center justify-between group cursor-pointer px-1"
                         >
                             {/* Left Side: Logo/Icon & Metadata */}
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 rounded-xl bg-zinc-800/60 border border-zinc-700/40 flex items-center justify-center overflow-hidden transition-colors group-hover:border-zinc-500">
+                            <div className="flex items-center gap-4 ">
+                                <div className="w-8 h-8 rounded-xl bg-zinc-800/60 border border-zinc-700/40 flex items-center justify-center overflow-hidden transition-colors group-hover:border-zinc-500">
                                     {company.isSvg ? (
                                         company.icon
                                     ) : (
                                         <Avatar
                                             src={company.logo}
-                                            className="w-full h-full rounded-xl object-cover scale-95"
+                                            className="w-full h-full rounded-xl  object-cover scale-95"
                                             alt={company.name}
                                         />
                                     )}
@@ -81,18 +82,15 @@ export default function RightSideOverview() {
                                         {company.name}
                                     </span>
                                     <span className="text-xs text-zinc-400 mt-0.5">
-                                        {company.category} • {company.location}
+                                        {company.category}
                                     </span>
                                 </div>
                             </div>
 
                             {/* Right Side: Jobs Counter */}
                             <div className="text-right">
-                                <div className="text-base font-semibold text-zinc-100">
+                                <div className=" text-sm font-semibold text-zinc-100">
                                     {company.activeJobs}
-                                </div>
-                                <div className="text-[10px] tracking-wider text-zinc-500 font-bold uppercase mt-0.5">
-                                    Active Jobs
                                 </div>
                             </div>
                         </div>
@@ -100,8 +98,9 @@ export default function RightSideOverview() {
 
                     {/* View All Button inside the Card Body */}
                     <Button
-                        variant="bordered"
-                        className="w-full mt-2 py-6 border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white rounded-xl bg-transparent transition-all font-medium text-sm"
+                        variant="ghost"
+                        className="w-full py-6 font-medium text-sm rounded-none "
+                    // className="w-full mt-2 py-6 border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white rounded-xl bg-transparent transition-all"
                     >
                         View All Companies
                     </Button>

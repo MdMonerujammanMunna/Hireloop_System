@@ -7,8 +7,15 @@ import {
     LogoTelegram,
 } from "@gravity-ui/icons";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+
+
 
 export default function Footer() {
+    const pathName = usePathname();
+    if (pathName.includes("/Dashboard")) {
+        return
+    }
     return (
         <footer className="bg-black">
             <div className="mx-auto container px-6 py-20">

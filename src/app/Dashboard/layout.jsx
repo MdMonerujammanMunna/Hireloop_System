@@ -1,11 +1,15 @@
 import { DashboardSideBar } from "@/components/dashboardComponents/DashboardSideBar";
+import RecruiterNavbar from "@/components/dashboardComponents/RecruiterNavbar/NavbarRecruiter";
 
 
 const DashboardLayout = ({ children }) => {
     return (
-        <div className="flex min-h-screen  mt-8">
+        <div className="flex min-h-screen">
             <DashboardSideBar />
-            <main className="flex-1 mx-12 pb-20">{children}</main>
+            <div className="flex-1 px-10 pb-20 ">
+                <RecruiterNavbar />
+                <main className="mt-8">{children}</main>
+            </div>
         </div>
     );
 };

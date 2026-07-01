@@ -1,18 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Link } from "@heroui/react";
+import { Button, Link, Spinner } from "@heroui/react";
 import { Bars, Xmark } from "@gravity-ui/icons";
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
+import { usePathname } from "next/navigation";
 
 
 export default function Navbar() {
+    const pathName = usePathname();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const { data: session, isLoading } = authClient.useSession()
-    const user = session?.user
-
+    const { data, isPending } = authClient.useSession();
+    if (isPending) {
+        return <div className="flex items-center justify-center"><Spinner /></div>
+    }
+    const user = data?.user;
     const navItems = [
         { label: "Browse Jobs", href: "#" },
         { label: "Company", href: "#" },
@@ -21,7 +24,9 @@ export default function Navbar() {
     const LogoutClick = async () => {
         await authClient.signOut();
     }
-
+    if (pathName.includes("/Dashboard")) {
+        return
+    }
     return (
         <nav className="w-full px-4 pt-4">
             <div className="mx-auto max-w-6xl">

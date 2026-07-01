@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Circle } from "@gravity-ui/icons";
+import { Avatar } from "@heroui/react";
 
 const applications = [
     {
@@ -50,37 +51,37 @@ const LeftSideOverview = () => {
             <div className="">
                 {/* Header */}
                 <div className="flex items-center justify-between mb-8">
-                    <h2 className="text-2xl font-semibold text-white">
+                    <h2 className="text-xl font-semibold text-white">
                         Recent Applications
                     </h2>
 
-                    <button className="text-sm text-zinc-400 hover:text-white transition">
+                    <button className="text-xs text-zinc-400 hover:text-white transition">
                         View all
                     </button>
                 </div>
 
                 {/* Table */}
-                <div className="overflow-x-auto w-full rounded-2xl border border-white/10 bg-[#121214] ">
-                    <table className="w-full min-w-[850px]">
+                <div className="overflow-x-auto w-75 md:w-full rounded-2xl border border-white/10 bg-[#121214] ">
+                    <table className="w-full">
                         <thead>
-                            <tr className="border-y border-white/10">
-                                <th className="px-6 py-4 text-left text-sm font-medium text-zinc-500">
+                            <tr className="border-b border-white/10">
+                                <th className="px-6 py-4 text-left text-xs font-medium text-zinc-500">
                                     Candidate Name
                                 </th>
 
-                                <th className="px-6 py-4 text-left text-sm font-medium text-zinc-500">
+                                <th className="px-6 py-4 text-left text-xs font-medium text-zinc-500">
                                     Role
                                 </th>
 
-                                <th className="px-6 py-4 text-left text-sm font-medium text-zinc-500">
+                                <th className="px-6 py-4 text-left text-xs font-medium text-zinc-500">
                                     Date Applied
                                 </th>
 
-                                <th className="px-6 py-4 text-left text-sm font-medium text-zinc-500">
+                                <th className="px-6 py-4 text-left text-xs font-medium text-zinc-500">
                                     Experience
                                 </th>
 
-                                <th className="px-6 py-4 text-left text-sm font-medium text-zinc-500">
+                                <th className="px-6 py-4 text-left text-xs font-medium text-zinc-500">
                                     Status
                                 </th>
                             </tr>
@@ -90,35 +91,37 @@ const LeftSideOverview = () => {
                             {applications.map((item, index) => (
                                 <tr
                                     key={index}
-                                    className="border-b border-white/5 hover:bg-white/[0.02] transition"
+                                    className="border-b border-white/5 hover:bg-white/2 transition"
                                 >
-                                    <td className="px-6 py-6">
-                                        <div className="flex items-center gap-3">
-                                            <div className="h-10 w-10 rounded-full bg-zinc-700 flex items-center justify-center">
-                                                <Circle className="h-5 w-5 text-zinc-400" />
-                                            </div>
-
-                                            <span className="font-medium text-white whitespace-nowrap">
+                                    <td className="px-3 py-2">
+                                        <div className="flex items-center gap-2">
+                                            <Avatar>
+                                                <Avatar.Image
+                                                    src="https://i.pravatar.cc/150?img=8"
+                                                    alt="John Doe"
+                                                />
+                                            </Avatar>
+                                            <span className="font-medium text-sm text-white whitespace-nowrap">
                                                 {item.name}
                                             </span>
                                         </div>
                                     </td>
 
-                                    <td className="px-6 py-6 text-zinc-400 whitespace-nowrap">
+                                    <td className="px-3 py-4 text-xs font-medium text-zinc-400 whitespace-nowrap">
                                         {item.role}
                                     </td>
 
-                                    <td className="px-6 py-6 text-zinc-400 whitespace-nowrap">
+                                    <td className="px-3 py-4 text-xs text-zinc-400 whitespace-nowrap">
                                         {item.date}
                                     </td>
 
-                                    <td className="px-6 py-6 text-zinc-400 whitespace-nowrap">
+                                    <td className="px-3 py-4 text-xs text-zinc-400 whitespace-nowrap">
                                         {item.experience}
                                     </td>
 
-                                    <td className="px-6 py-6">
+                                    <td className="px-3 py-4">
                                         <span
-                                            className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${statusStyles[item.status]}`}
+                                            className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-medium ${statusStyles[item.status]}`}
                                         >
                                             {item.status}
                                         </span>
