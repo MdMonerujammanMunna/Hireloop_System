@@ -3,6 +3,7 @@
 
 import { Button } from "@heroui/react";
 import { HouseFill } from "@gravity-ui/icons";
+import CompanyRegisterModal from "@/components/dashboardComponents/Register New Company Recruiter/NewCompany";
 
 const CompanyPage = () => {
     return (
@@ -59,12 +60,7 @@ const CompanyPage = () => {
                     {/* Buttons */}
 
                     <div className="flex flex-col items-center sm:flex-row justify-center gap-4 mt-10">
-
-                        <Button
-                            className="bg-white text-[#2F3131] font-medium px-16 py-6 rounded-lg"
-                        >
-                            Register your company
-                        </Button>
+                        <CompanyRegisterModal />
                         <Button
                             className=" border-white/15 text-white bg-[#1A1A1A] font-medium px-16 py-6 rounded-lg"
                         >
