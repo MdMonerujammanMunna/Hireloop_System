@@ -20,6 +20,7 @@ import {
 
 import Image from "next/image";
 import { useState } from "react";
+import { ImageUpload } from "@/lib/ImageUplode/UplodeImage";
 
 
 
@@ -55,11 +56,26 @@ export default function CompanyRegisterModal() {
     };
 
 
-    const FromSubmitForCompany = (e) => {
+    const FromSubmitForCompany = async (e) => {
         e.preventDefault()
         const Companydata = new FormData(e.target);
         const data = Object.fromEntries(Companydata.entries());
-        console.log(data)
+        // console.log(data)
+        // Image Uploading
+        const image = data.thumbnailImage
+        const UplodeImage = await ImageUpload(image)
+        //    Main Data Sent DATABASE
+        const MainDataSent = {
+            CompanyName: data.CompanyName,
+            Description: data.Description,
+            Employees: data.Employees,
+            Industry: data.Industry,
+            Website: data.website,
+            Location: data.location,
+            ThumbnailImage: UplodeImage.url
+        }
+        console.log(MainDataSent)
+
         setThumbnail(null);
         setPreviewUrl("");
         e.target.reset();

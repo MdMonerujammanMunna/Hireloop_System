@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 
 export default function RecruiterNavbar() {
     const pathName = usePathname();
-    console.log(pathName, "pathName");
+    // console.log(pathName, "pathName");
     return (
         <>
 
@@ -97,52 +97,6 @@ export default function RecruiterNavbar() {
                         </div>
                     </header>
             }
-
-
-            {/* 
-            <header className="h-14 border-b border-white/5 bg-[#141414] px-6">
-                <div className="flex h-full items-center justify-between">
-
-                    <div className="relative ">
-                        <Magnifier
-                            className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"
-                            width={18}
-                            height={18}
-                        />
-
-                        <Input
-                            placeholder="Search applications, jobs, or talent..."
-                            className={"w-full pl-12 rounded-full "}
-                        />
-                    </div>
-
-                 
-                    <div className="flex items-center">
-
-
-                        <button className="flex h-9 w-9 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-white/5 hover:text-white">
-                            <Bell className="h-4 w-4" />
-                        </button>
-
-
-                        <button className="ml-2 flex h-9 w-9 items-center justify-center rounded-lg text-zinc-400 transition hover:bg-white/5 hover:text-white">
-                            <Envelope className="h-4 w-4" />
-                        </button>
-
-
-                        <hr className="h-6 mx-5 border-white/20 border" />
-
-                        <Avatar>
-                            <Avatar.Image
-                                src="https://i.pravatar.cc/150?img=8"
-                                alt="User Avatar"
-                            />
-                        </Avatar>
-                    </div>
-
-                </div>
-            </header>
-             */}
         </>
 
     );
