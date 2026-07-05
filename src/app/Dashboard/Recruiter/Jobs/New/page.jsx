@@ -1,6 +1,6 @@
 "use client";
 
-import { CreateJobs } from "@/lib/actions/Jobs";
+import { CreateJobs } from "@/lib/actions/RecruterAction/Jobs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -36,7 +36,7 @@ export default function NewJobPage() {
             const payload = {
                 ...form,
                 companyId: "Man_1",
-                status: "active",
+                status: "pending",
                 createdAt: new Date(),
             };
             const res = await CreateJobs(payload);
@@ -54,7 +54,7 @@ export default function NewJobPage() {
     return (
         <div className="flex items-center justify-center p-4 antialiased text-white font-sans">
             {/* Modal Card Container */}
-            <div className="w-full max-w-[580px] bg-[#121214] border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
+            <div className="w-full max-w-145 bg-[#121214] border border-zinc-800 rounded-xl overflow-hidden shadow-2xl">
 
                 {/* Header Section */}
                 <div className="flex items-start justify-between px-6 pt-6 pb-4 border-b border-zinc-800">
@@ -133,7 +133,7 @@ export default function NewJobPage() {
                             <input
                                 type="date"
                                 name="deadline"
-                                className="w-full h-11 px-3.5 rounded-lg bg-[#1a1a1e] border border-zinc-800 text-zinc-200 focus:outline-none focus:border-zinc-700 transition text-sm [color-scheme:dark]"
+                                className="w-full h-11 px-3.5 rounded-lg bg-[#1a1a1e] border border-zinc-800 text-zinc-200 focus:outline-none focus:border-zinc-700 transition text-sm schme-dark"
                                 onChange={handleChange}
                                 required
                             />

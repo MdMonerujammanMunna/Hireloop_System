@@ -1,7 +1,7 @@
 "use client";
 
 import { Table, Button, Chip } from "@heroui/react";
-import { Eye, Pencil, TrashBin } from '@gravity-ui/icons';
+import { Eye, Pencil, Plus, TrashBin } from '@gravity-ui/icons';
 import Link from "next/link";
 
 export default function JobsTable({ item }) {
@@ -10,11 +10,33 @@ export default function JobsTable({ item }) {
             case "active":
                 return "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
 
-            case "Pending":
+            case "pending":
                 return "bg-amber-500/10 text-amber-400 border border-amber-500/20";
 
             default:
                 return "bg-red-500/10 text-red-400 border border-red-500/20";
+        }
+    };
+
+    const getJobTypeClass = (type) => {
+        switch (type) {
+            case "Full-time":
+                return "bg-blue-500/10 text-blue-400 border border-blue-500/20";
+
+            case "Part-time":
+                return "bg-purple-500/10 text-purple-400 border border-purple-500/20";
+
+            case "Remote":
+                return "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20";
+
+            case "Contract":
+                return "bg-orange-500/10 text-orange-400 border border-orange-500/20";
+
+            case "Internship":
+                return "bg-pink-500/10 text-pink-400 border border-pink-500/20";
+
+            default:
+                return "bg-zinc-500/10 text-zinc-400 border border-zinc-500/20";
         }
     };
 
@@ -34,7 +56,7 @@ export default function JobsTable({ item }) {
                 </div>
                 <Link href={"/Dashboard/Recruiter/Jobs/New"}>
                     <Button className="bg-orange-500 text-white hover:bg-orange-600">
-                        Add Job
+                        <Plus /> Add Job
                     </Button>
                 </Link>
             </div>
@@ -74,7 +96,11 @@ export default function JobsTable({ item }) {
                                     <Table.Cell>{job.location !== "" ? job.location : job.isRemote == true ? "Remote" : ""}</Table.Cell>
 
                                     <Table.Cell>
-                                        <Chip>
+                                        <Chip
+                                            className={`rounded-full px-3 py-1 text-xs font-medium ${getJobTypeClass(
+                                                job.type
+                                            )}`}
+                                        >
                                             {job.type}
                                         </Chip>
                                     </Table.Cell>

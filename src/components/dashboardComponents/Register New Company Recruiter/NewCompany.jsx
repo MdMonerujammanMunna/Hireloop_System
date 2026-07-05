@@ -23,6 +23,7 @@ import { useState } from "react";
 import { ImageUpload } from "@/lib/ImageUplode/UplodeImage";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import { RegisterNewCompany } from "@/lib/actions/RecruterAction/RegisterNewCompany";
 
 
 
@@ -68,6 +69,7 @@ export default function CompanyRegisterModal() {
         const Companydata = new FormData(e.target);
         const data = Object.fromEntries(Companydata.entries());
         // console.log(data)
+
         // Image Uploading
         const image = data.thumbnailImage
         const UplodeImage = await ImageUpload(image)
@@ -84,8 +86,12 @@ export default function CompanyRegisterModal() {
             Location: data.location,
             ThumbnailImage: UplodeImage.url
         }
+
+        // Api call for the company
+        const Newcompanies = await RegisterNewCompany(MainDataSent)
+
         toast.success("Company Registered Successfully")
-        console.log(MainDataSent)
+        // console.log(MainDataSent)
 
         // This is Refreshing the form
         setThumbnail(null);
