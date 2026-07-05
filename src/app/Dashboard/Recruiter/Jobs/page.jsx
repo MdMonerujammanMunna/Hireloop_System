@@ -3,8 +3,9 @@ import { getCompanyJobs } from '@/lib/api/job';
 import React from 'react';
 
 const RecruiterJobs = async () => {
-    const companyId = "Man_123"
+    const companyId = "Man_1"
     const res = await getCompanyJobs(companyId)
+    console.log(res)
     return (
         <div>
             <JobsTable item={res} />

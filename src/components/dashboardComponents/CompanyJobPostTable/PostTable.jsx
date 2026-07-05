@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function JobsTable({ item }) {
     const getStatusClass = (status) => {
         switch (status) {
-            case "Active":
+            case "active":
                 return "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
 
             case "Pending":

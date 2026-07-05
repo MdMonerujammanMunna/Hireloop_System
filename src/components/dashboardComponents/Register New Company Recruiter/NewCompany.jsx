@@ -21,6 +21,8 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 import { ImageUpload } from "@/lib/ImageUplode/UplodeImage";
+import toast from "react-hot-toast";
+import { authClient } from "@/lib/auth-client";
 
 
 
@@ -55,6 +57,11 @@ export default function CompanyRegisterModal() {
         setPreviewUrl(URL.createObjectURL(file));
     };
 
+    // User Session for the Company
+    const UserSession = authClient.useSession();
+    const UserID = UserSession?.data?.user?.id
+    const UserEmail = UserSession?.data?.user?.email
+    // console.log(UserID, UserEmail)
 
     const FromSubmitForCompany = async (e) => {
         e.preventDefault()
@@ -64,8 +71,11 @@ export default function CompanyRegisterModal() {
         // Image Uploading
         const image = data.thumbnailImage
         const UplodeImage = await ImageUpload(image)
+
         //    Main Data Sent DATABASE
         const MainDataSent = {
+            UserID: UserID,
+            UserEmail: UserEmail,
             CompanyName: data.CompanyName,
             Description: data.Description,
             Employees: data.Employees,
@@ -74,8 +84,10 @@ export default function CompanyRegisterModal() {
             Location: data.location,
             ThumbnailImage: UplodeImage.url
         }
+        toast.success("Company Registered Successfully")
         console.log(MainDataSent)
 
+        // This is Refreshing the form
         setThumbnail(null);
         setPreviewUrl("");
         e.target.reset();
