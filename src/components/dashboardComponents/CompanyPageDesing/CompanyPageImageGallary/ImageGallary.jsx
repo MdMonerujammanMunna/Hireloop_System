@@ -37,7 +37,7 @@ export default function ImageGallary() {
             {/* Gallery */}
             <div className="grid gap-4 lg:grid-cols-3">
                 {/* Large Image */}
-                <div className="relative h-[420px] overflow-hidden rounded-xl lg:col-span-2">
+                <div className="relative h-105 overflow-hidden rounded-xl lg:col-span-2">
                     <Image
                         src={images[0].src}
                         alt="Office"
@@ -51,7 +51,7 @@ export default function ImageGallary() {
                     {images.slice(1).map((image) => (
                         <div
                             key={image.id}
-                            className="relative h-[202px] overflow-hidden rounded-xl"
+                            className="relative h-50 overflow-hidden rounded-xl"
                         >
                             <Image
                                 src={image.src}

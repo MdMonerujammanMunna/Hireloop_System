@@ -106,7 +106,7 @@ export default function ActiveRolesCard() {
                         </div>
 
                         <div className="mt-6 flex items-center justify-between">
-                            <div isBordered max={2} className="flex items-center -space-x-2">
+                            <div max={2} className="flex items-center -space-x-2">
                                 {job.applicants.map((img) => (
                                     <Avatar key={img} className="border-2 ">
                                         <Avatar.Image src={img} alt="Avatar" size="sm" />

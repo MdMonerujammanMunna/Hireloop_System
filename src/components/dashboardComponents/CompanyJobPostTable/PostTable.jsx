@@ -3,6 +3,7 @@
 import { Table, Button, Chip } from "@heroui/react";
 import { Eye, Pencil, Plus, TrashBin } from '@gravity-ui/icons';
 import Link from "next/link";
+import { DeleteModalForClick } from "@/components/DeleteModal/DeleteModal";
 
 export default function JobsTable({ item }) {
     const getStatusClass = (status) => {
@@ -125,9 +126,7 @@ export default function JobsTable({ item }) {
                                                 <Pencil className="size-5" />
                                             </button>
 
-                                            <button className="flex h-11 w-11 items-center justify-center rounded-full bg-red-500 text-white transition hover:bg-rose-600">
-                                                <TrashBin className="size-5" />
-                                            </button>
+                                            <DeleteModalForClick DeletedData={job} />
                                         </div>
                                     </Table.Cell>
                                 </Table.Row>

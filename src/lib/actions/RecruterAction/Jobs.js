@@ -16,3 +16,20 @@ export const CreateJobs = async (NewjobData) => {
 
     return await res.json()
 }
+
+export const DeleteJobModal = async (jobsId) => {
+    const res = await fetch(`${baseUrl}/api/jobs/delete/HowCreatethis`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+            cache: "no-store",
+        },
+        body: JSON.stringify({ jobsId }),
+    })
+
+    if (!res.ok) {
+        throw new Error(`Job deletion failed: ${res.status}`)
+    }
+
+    return await res.json()
+}

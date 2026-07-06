@@ -4,7 +4,8 @@ import { CreateJobs } from "@/lib/actions/RecruterAction/Jobs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const JobCreatePage = () => {
+const JobCreatePage = ({ CompanyData }) => {
+    // console.log(CompanyData)
     const router = useRouter();
     const [form, setForm] = useState({
         title: "",
@@ -19,7 +20,7 @@ const JobCreatePage = () => {
         responsibilities: "",
         requirements: "",
         benefits: "",
-        company: "Your Company Name",
+        company: CompanyData.CompanyName,
     });
 
     const handleChange = (e) => {
@@ -35,7 +36,7 @@ const JobCreatePage = () => {
         try {
             const payload = {
                 ...form,
-                companyId: "Man_1",
+                companyId: CompanyData._id,
                 status: "pending",
                 createdAt: new Date(),
             };
