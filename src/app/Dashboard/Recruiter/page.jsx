@@ -1,6 +1,7 @@
 "use client"
 import DashboardOverview from "@/components/dashboardComponents/Overview/Overview";
 import StatsCards from "@/components/dashboardComponents/StatsCard/StatsCard";
+import { getCompanyJobs } from "@/lib/api/RecruterApi/job";
 import { useSession } from "@/lib/auth-client";
 
 
