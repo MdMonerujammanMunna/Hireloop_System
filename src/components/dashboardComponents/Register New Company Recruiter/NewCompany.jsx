@@ -84,7 +84,8 @@ export default function CompanyRegisterModal() {
             Industry: data.Industry,
             Website: data.website,
             Location: data.location,
-            ThumbnailImage: UplodeImage.url
+            ThumbnailImage: UplodeImage.url,
+            CompanyStatus: "pending",
         }
 
         // Api call for the company
