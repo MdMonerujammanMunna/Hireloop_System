@@ -3,6 +3,7 @@
 import { CreateJobs } from "@/lib/actions/RecruterAction/Jobs";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const JobCreatePage = ({ CompanyData }) => {
     // console.log(CompanyData)
@@ -42,13 +43,13 @@ const JobCreatePage = ({ CompanyData }) => {
             };
             const res = await CreateJobs(payload);
             if (res.insertedId) {
-                alert("Job posted successfully!");
+                toast.success("Job posted successfully! Awaiting admin approval.")
                 e.target.reset();
                 router.push("/Dashboard/Recruiter/Jobs");
             }
         } catch (error) {
             console.error("Error posting job:", error);
-            alert("Failed to post job. Please try again.");
+            toast.error("Failed to post job. Please try again.");
         }
     };
     return (

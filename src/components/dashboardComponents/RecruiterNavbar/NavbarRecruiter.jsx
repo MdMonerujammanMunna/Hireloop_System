@@ -3,14 +3,13 @@
 import {
     Magnifier,
     Bell,
-    Envelope,
 } from "@gravity-ui/icons";
 import { Avatar, Badge, Input } from "@heroui/react";
 import { usePathname } from "next/navigation";
 
-export default function RecruiterNavbar() {
+export default function RecruiterNavbar({ UserName, ComapnyName, ComapnyImage }) {
+    // PathName for checking
     const pathName = usePathname();
-    // console.log(pathName, "pathName");
     return (
         <>
 
@@ -80,22 +79,23 @@ export default function RecruiterNavbar() {
                             <div className="flex items-center gap-3">
                                 <div className="text-right">
                                     <p className="text-sm font-medium text-white">
-                                        Alex Sterling
+                                        {UserName}
                                     </p>
 
                                     <p className="text-xs text-zinc-500">
-                                        TechFlow Inc.
+                                        {ComapnyName}
                                     </p>
                                 </div>
-
-                                <Avatar
-                                    src="https://i.pravatar.cc/150?img=8"
-                                    size="sm"
-                                    className="ring-2 ring-zinc-700"
-                                />
+                                <Avatar>
+                                    <Avatar.Image
+                                        src={ComapnyImage}
+                                        alt="Company Logo"
+                                        size="sm"
+                                        className="rounded-full ring-2 ring-zinc-700" />
+                                </Avatar>
                             </div>
                         </div>
-                    </header>
+                    </header >
             }
         </>
 

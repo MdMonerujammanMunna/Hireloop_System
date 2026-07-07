@@ -4,6 +4,7 @@ import { DeleteJobModal } from "@/lib/actions/RecruterAction/Jobs";
 import { TrashBin } from "@gravity-ui/icons";
 import { AlertDialog, Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export function DeleteModalForClick({ DeletedData }) {
     const router = useRouter()
@@ -11,6 +12,7 @@ export function DeleteModalForClick({ DeletedData }) {
     const DlecteFunctionForClick = async (jobsId) => {
         // console.log(jobsId)
         const DeleteJob = await DeleteJobModal(jobsId)
+        toast.success("Deleted successfully")
         router.refresh()
     }
 
