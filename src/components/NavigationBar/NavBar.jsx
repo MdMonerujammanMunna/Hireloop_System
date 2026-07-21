@@ -17,7 +17,7 @@ export default function Navbar() {
     }
     const user = data?.user;
     const navItems = [
-        { label: "Browse Jobs", href: "#" },
+        { label: "Browse Jobs", href: "/BrowseJobs" },
         { label: "Company", href: "#" },
         { label: "Pricing", href: "/Dashboard/Recruiter" },
     ];

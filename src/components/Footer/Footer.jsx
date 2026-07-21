@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 
 export default function Footer() {
     const pathName = usePathname();
-    if (pathName.includes("/Dashboard")) {
+    if (pathName.includes("/Dashboard") || pathName.includes("/BrowseJobs")) {
         return
     }
     return (
