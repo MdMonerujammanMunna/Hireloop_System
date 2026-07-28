@@ -174,7 +174,7 @@ export default function Footer() {
                     </div>
 
                     <div className="flex flex-wrap items-center justify-center gap-1 lg:gap-6 ">
-                        <p>Copyright 2026 — Programming Hero</p>
+                        <p>Copyright 2026 — Md.Monerujamman Munna & Programming Hero</p>
                         <Link
                             href="#"
                             className="text-zinc-600 transition hover:text-[#5C53FE] no-underline"
