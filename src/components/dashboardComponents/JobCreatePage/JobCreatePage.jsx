@@ -22,6 +22,7 @@ const JobCreatePage = ({ CompanyData }) => {
         requirements: "",
         benefits: "",
         company: CompanyData.CompanyName,
+        profileImage: CompanyData.ThumbnailImage,
     });
 
     const handleChange = (e) => {

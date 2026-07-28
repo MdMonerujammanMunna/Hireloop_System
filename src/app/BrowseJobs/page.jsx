@@ -2,58 +2,24 @@ import FilterSidebar from '@/components/BrowseJobsPageComponents/FiltersideBar/F
 import JobsHeader from '@/components/BrowseJobsPageComponents/HeaderJobPage/JobsHeader';
 import JobCard from '@/components/BrowseJobsPageComponents/JobDetailsCard/JobCard';
 import SearchBarForBrowseJobs from '@/components/BrowseJobsPageComponents/SearchBar/Searchbar';
+import { getAllJobs } from '@/lib/api/BrowseJob/AllJobget';
 import React from 'react';
-const jobs = [
-    {
-        id: 1,
-        title: "Senior Product Designer",
-        company: "TechFlow Systems",
-        location: "San Francisco, CA (Remote)",
-        salary: "$140k - $180k",
-        type: "Full-time",
-        tag: "Easy Apply",
-        tagColor: "green",
-    },
-    {
-        id: 2,
-        title: "Lead Frontend Engineer",
-        company: "FinGrid Solutions",
-        location: "New York, NY",
-        salary: "$165k - $210k",
-        type: "Hybrid",
-    },
-    {
-        id: 3,
-        title: "UX Researcher",
-        company: "CreativeStudio",
-        location: "Austin, TX",
-        salary: "$110k - $145k",
-        type: "Contract",
-    },
-    {
-        id: 4,
-        title: "Machine Learning Engineer",
-        company: "HealthAI Corp",
-        location: "Boston, MA (Remote)",
-        salary: "$180k - $250k",
-        type: "Senior",
-        tag: "Hot Job",
-        tagColor: "yellow",
-    },
-];
-const BrowseJobsPage = () => {
+
+const BrowseJobsPage = async () => {
+    const DataJobs = await getAllJobs()
+    const Length = DataJobs.length
     return (
         <div>
             <SearchBarForBrowseJobs />
             <div className='grid md:grid-cols-5 mx-4 md:gap-5'>
                 <FilterSidebar />
-                <main className='col-span-4 mt-10 md:mt-0'>
+                <main className='col-span-0 mt-10 md:mt-0 md:col-span-4'>
 
-                    <div className="min-h-screen bg-[#0b0b0b] p-8 text-white">
+                    <div className="min-h-screen  p-8 text-white">
                         <div className="mx-auto max-w-5xl">
-                            <JobsHeader />
+                            <JobsHeader Length={Length} />
                             <div className="space-y-5">
-                                {jobs.map((job) => (
+                                {DataJobs.map((job) => (
                                     <JobCard key={job.id} job={job} />
                                 ))}
                             </div>
