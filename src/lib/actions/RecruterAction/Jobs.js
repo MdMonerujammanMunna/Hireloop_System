@@ -1,5 +1,5 @@
 "use server"
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000"
 export const CreateJobs = async (NewjobData) => {
     const res = await fetch(`${baseUrl}/api/jobs`, {
         method: "POST",

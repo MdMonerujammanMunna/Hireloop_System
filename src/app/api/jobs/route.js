@@ -31,3 +31,13 @@ export async function POST(request) {
         }
     );
 }
+
+export async function GET() {
+    await connectClient();
+    const jobs = await jobsCollection.find({}).sort({ createdAt: -1 }).toArray();
+
+    return new Response(JSON.stringify(jobs), {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+    });
+}

@@ -1,25 +1,25 @@
 "use client";
 
-import { Magnifier, SealPercent } from "@gravity-ui/icons";
-import { Input, Button } from "@heroui/react";
+import { Magnifier } from "@gravity-ui/icons";
 
-export default function SearchBar() {
+export default function SearchBar({ query, onQueryChange }) {
     return (
-        <div className=" rounded-xl border border-zinc-800 bg-[#1A1A1A] mx-10 mt-3 mb-8">
-            <div className="flex flex-col md:flex-row items-center justify-between px-4 py-5 gap-10">
-                <div className="flex items-center  gap-5 w-full">
-                    <Magnifier className="font-bold text-white w-6 h-6 md:block hidden" />
-                    <Input
-                        placeholder="Search by job title, keywords..."
-                        className={"w-full border border-white  rounded-md "}
-                    />
-                </div>
-
-                <Button
-                    className={" px-16 py-5 rounded-md bg-white text-[#2F3131] font-semibold"}
+        <div className="mx-auto my-5 max-w-6xl rounded-xl border border-zinc-800/80 bg-[#1a1a1a] p-3">
+            <div className="flex items-center gap-3">
+                <Magnifier className="ml-2 h-5 w-5 text-zinc-500" />
+                <input
+                    value={query}
+                    onChange={(event) => onQueryChange(event.target.value)}
+                    placeholder="Search by job title, keywords..."
+                    className="h-10 w-full bg-transparent px-2 text-sm text-white outline-none placeholder:text-zinc-600"
+                    aria-label="Search jobs"
+                />
+                <button
+                    type="button"
+                    className="hidden h-10 shrink-0 rounded-md bg-white px-6 text-xs font-medium text-zinc-900 transition hover:bg-zinc-200 sm:block"
                 >
                     Search Jobs
-                </Button>
+                </button>
             </div>
         </div>
     );
