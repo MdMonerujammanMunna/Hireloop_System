@@ -2,13 +2,13 @@
 
 import { Bookmark, Briefcase, MapPin, Star, TagDollar } from "@gravity-ui/icons";
 import Image from "next/image";
+import Link from "next/link";
 
 
 export default function JobCard({ job }) {
     return (
-        <article className="group flex items-start justify-between gap-4 rounded-xl border border-zinc-800 bg-[#1b1b1b] p-4 transition-all duration-300 hover:border-zinc-700 hover:bg-[#202020] sm:items-center sm:p-5">
+        <Link href={`/BrowseJobs/${job._id}`} className="group flex items-start justify-between gap-4 rounded-xl border border-zinc-800 bg-[#1b1b1b] p-4 transition-all duration-300 hover:border-zinc-700 hover:bg-[#202020] sm:items-center sm:p-5">
             {/* Left */}
-
             <div className="flex min-w-0 items-start gap-4 sm:items-center">
                 {/* Logo */}
 
@@ -75,6 +75,6 @@ export default function JobCard({ job }) {
             <button aria-label={`Save ${job.title}`} className="rounded-lg p-2 text-zinc-500 transition hover:bg-zinc-800 hover:text-white">
                 <Bookmark size={22} />
             </button>
-        </article>
+        </Link >
     );
 }
