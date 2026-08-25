@@ -1,5 +1,5 @@
 "use server"
-const baseUrl = process.env.BETTER_AUTH_URL || "http://localhost:3000"
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
 export const CreateJobs = async (NewjobData) => {
     const res = await fetch(`${baseUrl}/api/jobs`, {
         method: "POST",
@@ -18,12 +18,12 @@ export const CreateJobs = async (NewjobData) => {
 }
 
 export const DeleteJobModal = async (jobsId) => {
-    const res = await fetch(`${baseUrl}/api/jobs/delete/HowCreatethis`, {
+    const res = await fetch(`${baseUrl}/api/jobs`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            cache: "no-store",
         },
+        cache: "no-store",
         body: JSON.stringify({ jobsId }),
     })
 
